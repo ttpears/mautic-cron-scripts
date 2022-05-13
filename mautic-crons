@@ -1,0 +1,25 @@
+# vim: filetype=crontab
+#
+# Mautic requires a number of crons to be continually run
+# Rather than try and make guess on how often they should run
+# this will run them constantly.
+# 
+# Grouping them by their functions makes it so Mautic can continue
+# to process out emails and perform other functions, even if segment
+# updates take considerbly longer (ours take ~6 hours for a full cycle)
+#
+
+# Necessary for conditionals to work, eg: IP checks
+SHELL=/bin/bash
+
+# Where do failure emails go
+MAILTO=someone@example.com
+
+# All scripts run every minute, but each script will make
+# a determination at runtime if it should proceed
+# Meaning, it's safe to constantly run them because they won't double-up
+# on each other, you can watch the logs to see when they actually begin
+# execution, or immediately exit if the same script is already running
+* * * * * www-data   /srv/mautic-scripts/quick-updates.sh
+* * * * * www-data   /srv/mautic-scripts/segment-updates.sh
+* * * * * www-data   /srv/mautic-scripts/send-emails.sh 
