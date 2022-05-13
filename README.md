@@ -46,7 +46,8 @@ git clone https://github.com/ttpears/mautic-cron-scripts.git /srv/mautic-scripts
 ```
 chown $MAUTIC_USER:$MAUTIC_USER /srv/mautic-scripts/logs
 ```
-+ Symlink this file to somewhere under `/etc/cron.d/`, eg:  
++ **If you're not using 'www-data' as the user, update the user in this file before deploying**  
+Symlink this file to somewhere under `/etc/cron.d/`, eg:  
 ```
 ln -s /srv/mautic-scripts/mautic-crons /etc/cron.d/
 ```
