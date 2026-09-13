@@ -14,6 +14,8 @@ These ensure a few things:
 The Mautic Community was very helpful in trying to help us when I started this optimization project.  
 Our "full segment updates" were taking 30+ hours, so a big thank you to [everyone on this thread](https://forum.mautic.org/t/always-long-running-queries-against-email-stats-5-hours/23898), and the Mautic Community in general, hopefully others can find some use for these scripts.
 
+Field notes: [What I got wrong about a four-hour cron job](https://hackyourworld.com/when-a-cron-job-takes-four-hours/) reviews the current scripts, explains why the `pgrep` overlap check is not atomic, and shows the lock, exit-status, logging, and scheduler-ownership changes I would make now.
+
 ## Getting started
 
 ### common.sh
